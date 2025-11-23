@@ -314,7 +314,7 @@ sudo systemctl restart docker
 
 # Or add timezone in docker-compose.yml
 environment:
-  - TZ=Asia/Shanghai  # or your timezone
+  - TZ=Europe/Paris  # or your timezone
 ```
 
 **Solution 2: Verify API Keys**

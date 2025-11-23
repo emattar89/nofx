@@ -314,7 +314,7 @@ sudo systemctl restart docker
 
 # 或在 docker-compose.yml 中添加时区设置
 environment:
-  - TZ=Asia/Shanghai  # 或您的时区
+  - TZ=Europe/Paris  # 或您的时区
 ```
 
 **解决方案 2: 验证 API 密钥**

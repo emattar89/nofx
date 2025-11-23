@@ -201,7 +201,7 @@ services:
 
 ```bash
 # .env
-TZ=Asia/Shanghai
+TZ=Europe/Paris
 BACKEND_PORT=8080
 FRONTEND_PORT=3000
 ```
