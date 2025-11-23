@@ -276,7 +276,7 @@ export const translations = {
     twoStageInvalidFormat:
       'Invalid private key format. Expected {length} hexadecimal characters (optional 0x prefix).',
     testnetDescription:
-      'Enable to connect to exchange test environment for simulated trading',
+      'Hyperliquid testnet only: connect to Hyperliquid test environment for simulated trading',
     securityWarning: 'Security Warning',
     saveConfiguration: 'Save Configuration',
 
@@ -703,7 +703,7 @@ export const translations = {
 
     faqTestnet: 'Can I use testnet for testing?',
     faqTestnetAnswer:
-      'Testnet is not supported at the moment. We recommend using real trading with small amounts (10-50 USDT) for testing.',
+      'Yes — Hyperliquid testnet is supported. Enable "Use Testnet" when configuring Hyperliquid. For other exchanges, we recommend testing with small real balances (10-50 USDT).',
 
     // Trading Questions
     faqNoTrades: "Why isn't my trader making any trades?",
@@ -1132,7 +1132,7 @@ export const translations = {
     twoStageSubmit: '确认',
     twoStageInvalidFormat:
       '私钥格式不正确，应为 {length} 位十六进制字符（可选 0x 前缀）。',
-    testnetDescription: '启用后将连接到交易所测试环境,用于模拟交易',
+    testnetDescription: '仅适用于 Hyperliquid：启用后连接 Hyperliquid 测试环境，用于模拟交易',
     securityWarning: '安全提示',
     saveConfiguration: '保存配置',
 
@@ -1515,7 +1515,7 @@ export const translations = {
 
     faqTestnet: '可以使用测试网测试吗？',
     faqTestnetAnswer:
-      '暂时不支持测试网。我们建议使用真实交易但小额资金（10-50 USDT）进行测试。',
+      '可以，Hyperliquid 已支持测试网。在配置 Hyperliquid 时打开“使用测试网”即可。其他交易所建议使用小额真实资金（10-50 USDT）进行测试。',
 
     // Trading Questions
     faqNoTrades: '为什么我的交易员不开仓？',

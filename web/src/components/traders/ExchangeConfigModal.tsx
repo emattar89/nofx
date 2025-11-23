@@ -219,17 +219,20 @@ export function ExchangeConfigModal({
     e.preventDefault()
     if (!selectedExchangeId) return
 
+    const isHyperliquid = selectedExchange?.id === 'hyperliquid'
+    const testnetEnabled = isHyperliquid ? testnet : false
+
     // 根据交易所类型验证不同字段
     if (selectedExchange?.id === 'binance') {
       if (!apiKey.trim() || !secretKey.trim()) return
-      await onSave(selectedExchangeId, apiKey.trim(), secretKey.trim(), testnet)
-    } else if (selectedExchange?.id === 'hyperliquid') {
+      await onSave(selectedExchangeId, apiKey.trim(), secretKey.trim(), testnetEnabled)
+    } else if (isHyperliquid) {
       if (!apiKey.trim() || !hyperliquidWalletAddr.trim()) return // 验证私钥和钱包地址
       await onSave(
         selectedExchangeId,
         apiKey.trim(),
         '',
-        testnet,
+        testnetEnabled,
         hyperliquidWalletAddr.trim()
       )
     } else if (selectedExchange?.id === 'aster') {
@@ -239,7 +242,7 @@ export function ExchangeConfigModal({
         selectedExchangeId,
         '',
         '',
-        testnet,
+        testnetEnabled,
         undefined,
         asterUser.trim(),
         asterSigner.trim(),
@@ -251,7 +254,7 @@ export function ExchangeConfigModal({
         selectedExchangeId,
         lighterPrivateKey.trim(),
         '',
-        testnet,
+        testnetEnabled,
         lighterWalletAddr.trim(),
         undefined,
         undefined,
@@ -262,11 +265,21 @@ export function ExchangeConfigModal({
       )
     } else if (selectedExchange?.id === 'okx') {
       if (!apiKey.trim() || !secretKey.trim() || !passphrase.trim()) return
-      await onSave(selectedExchangeId, apiKey.trim(), secretKey.trim(), testnet)
+      await onSave(
+        selectedExchangeId,
+        apiKey.trim(),
+        secretKey.trim(),
+        testnetEnabled
+      )
     } else {
       // 默认情况（其他CEX交易所）
       if (!apiKey.trim() || !secretKey.trim()) return
-      await onSave(selectedExchangeId, apiKey.trim(), secretKey.trim(), testnet)
+      await onSave(
+        selectedExchangeId,
+        apiKey.trim(),
+        secretKey.trim(),
+        testnetEnabled
+      )
     }
   }
 
@@ -757,6 +770,42 @@ export function ExchangeConfigModal({
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    {/* 测试网开关 */}
+                    <div
+                      className="flex items-start justify-between p-3 rounded mb-4"
+                      style={{
+                        background: '#0B0E11',
+                        border: '1px solid #2B3139',
+                      }}
+                    >
+                      <div className="mr-4">
+                        <div
+                          className="text-sm font-semibold"
+                          style={{ color: '#EAECEF' }}
+                        >
+                          {t('useTestnet', language)}
+                        </div>
+                        <div
+                          className="text-xs mt-1"
+                          style={{ color: '#848E9C', lineHeight: '1.6' }}
+                        >
+                          {t('testnetDescription', language)}
+                        </div>
+                      </div>
+                      <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="sr-only peer"
+                          checked={testnet}
+                          onChange={(e) => setTestnet(e.target.checked)}
+                        />
+                        <div
+                          className="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-yellow-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-black after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-400"
+                          style={{ backgroundColor: '#2B3139' }}
+                        ></div>
+                      </label>
                     </div>
 
                     {/* Agent Private Key 字段 */}
